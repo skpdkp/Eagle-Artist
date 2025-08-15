@@ -396,29 +396,14 @@ async def start_handler(_, message):
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
-await message.reply_animation(
-    👋 Hello {first_name}!
 
-Welcome to **{@Artist_music_robot}** – your personal Telegram music bot. 🎶  
-You can play songs in group voice chats by simply using inline commands or by sending song names or links.
-
-✨ Features:
-• High-quality music streaming  
-• Supports YouTube, Spotify, Apple Music, etc.  
-• Fast and responsive  
-• Easy-to-use commands
-
-📢 Stay updated & get support:
-Support Group: @bye_artist  
-Updates Channel: @bye_eagle
-
-Type /help to see all commands and how to use the bot!
-
-Enjoy the music! 🎧
+    await message.reply_animation(
+        animation="https://files.catbox.moe/lhbsqt.mp4",
         caption=caption,
         parse_mode=ParseMode.MARKDOWN,
         reply_markup=reply_markup
-
+    )
+    
     # Register chat ID for broadcasting silently
     chat_id = message.chat.id
     chat_type = message.chat.type
