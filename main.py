@@ -396,7 +396,10 @@ async def start_handler(_, message):
         ]
     ]
     reply_markup = InlineKeyboardMarkup(buttons)
-
+await message.reply_animation(
+        caption=caption,
+        parse_mode=ParseMode.MARKDOWN,
+        reply_markup=reply_markup
 
     # Register chat ID for broadcasting silently
     chat_id = message.chat.id
