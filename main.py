@@ -723,7 +723,7 @@ async def process_play_command(message: Message, query: str):
         secs = isodate.parse_duration(duration_iso).total_seconds()
         if secs > MAX_DURATION_SECONDS:
             await processing_message.edit(
-                "❌ Streams longer than 15 min are not allowed. If u are the owner of this bot contact @xyz09723 to upgrade your plan"
+                "❌ Streams longer than 15 min are not allowed. If u are the owner of this bot contact @Knoxhelp to upgrade your plan"
             )
             return
 
@@ -920,7 +920,9 @@ async def fallback_local_playback(chat_id: int, message: Message, song_info: dic
         one_line = _one_line_title(song_info["title"])
         base_caption = (
             "<blockquote>"
-            "<b>🎧 byeArtist ✘ Music Streaming</b> (Local Playback)\n\n"
+            "<b>🎧 byeArtist ✘ Music Streaming</b> (@bye_artist) \n\n"
+            "<blockquote>"
+            "<blockquote>"
             f"❍ <b>Title:</b> {one_line}\n"
             f"❍ <b>Requested by:</b> {song_info['requester']}"
             "</blockquote>"
