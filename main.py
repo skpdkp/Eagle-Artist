@@ -388,10 +388,10 @@ async def start_handler(_, message):
     buttons = [
         [
             InlineKeyboardButton(f"➕ {add_me_text}", url=f"{BOT_LINK}?startgroup=true"),
-            InlineKeyboardButton(f"📢 {updates_text}", url="https://t.me/Bye_Eagle")
+            InlineKeyboardButton(f"📢 {updates_text}", url="https://t.me/Eagle_hu")
         ],
         [
-            InlineKeyboardButton(f"💬 {support_text}", url="https://t.me/bye_artist"),
+            InlineKeyboardButton(f"💬 {support_text}", url="https://t.me/+GuDQoXPPM99mNDU1"),
             InlineKeyboardButton(f"❓ {help_text}", callback_data="show_help")
         ]
     ]
@@ -443,10 +443,10 @@ async def go_back_callback(_, callback_query):
     buttons = [
         [
             InlineKeyboardButton(f"➕ {add_me_text}", url=f"{BOT_LINK}?startgroup=true"),
-            InlineKeyboardButton(f"📢 {updates_text}", url="https://t.me/bye_eagle")
+            InlineKeyboardButton(f"📢 {updates_text}", url="https://t.me/eagle_hu")
         ],
         [
-            InlineKeyboardButton(f"💬 {support_text}", url="https://t.me/bye_artist"),
+            InlineKeyboardButton(f"💬 {support_text}", url="https://t.me/+GuDQoXPPM99mNDU1"),
             InlineKeyboardButton(f"❓ {help_text}", callback_data="show_help")
         ]
     ]
@@ -716,14 +716,14 @@ async def process_play_command(message: Message, query: str):
         video_url, title, duration_iso, thumb = result
         if not video_url:
             await processing_message.edit(
-                "❌ Could not find the song. Try another query.\nSupport: @bye_artist"
+                "❌ Could not find the song. Try another query.\nSupport: @eagle_hu"
             )
             return
 
         secs = isodate.parse_duration(duration_iso).total_seconds()
         if secs > MAX_DURATION_SECONDS:
             await processing_message.edit(
-                "❌ Streams longer than 15 min are not allowed. If u are the owner of this bot contact @Knoxhelp to upgrade your plan"
+                "❌ Streams longer than 15 min are not allowed. If u are the owner of this bot contact @eagle_hu to upgrade your plan"
             )
             return
 
@@ -748,9 +748,9 @@ async def process_play_command(message: Message, query: str):
             ])
             await message.reply(
                 f"✨ Added to queue :\n\n"
-                f"**❍ Title ➥** {title}\n"
-                f"**❍ Time ➥** {readable}\n"
-                f"**❍ By ➥ ** {message.from_user.first_name if message.from_user else 'Unknown'}\n"
+                f"**☞ Title ➥** {title}\n"
+                f"**☞ Time ➥** {readable}\n"
+                f"**☞ By ➥ ** {message.from_user.first_name if message.from_user else 'Unknown'}\n"
                 f"**Queue number:** {len(chat_containers[chat_id]) - 1}",
                 reply_markup=queue_buttons
             )
@@ -852,12 +852,12 @@ async def update_progress_caption(
             InlineKeyboardButton(text="▢", callback_data="stop")
         ]
         progress_button = InlineKeyboardButton(text=progress_bar, callback_data="progress")
-        playlist_button = InlineKeyboardButton(text="➕ᴀᴅᴅ тσ ρℓαυℓιѕт➕", callback_data="add_to_playlist")
+        clear_button = InlineKeyboardButton(text="➕ clear ➕", callback_data="add_to_clear")
 
         new_keyboard = InlineKeyboardMarkup([
             control_row,
             [progress_button],
-            [playlist_button]
+            [clear_button]
         ])
 
         try:
@@ -882,7 +882,7 @@ async def update_progress_caption(
 
 
 
-LOG_CHAT_ID = "@Artistmusiclogs"
+LOG_CHAT_ID = "@eagle_hu"
 
 async def fallback_local_playback(chat_id: int, message: Message, song_info: dict):
     playback_mode[chat_id] = "local"
@@ -920,11 +920,11 @@ async def fallback_local_playback(chat_id: int, message: Message, song_info: dic
         one_line = _one_line_title(song_info["title"])
         base_caption = (
             "<blockquote>"
-            "<b>🎧 byeArtist ✘ Music Streaming</b> (@bye_artist) \n\n"
+            "<b>🎧 Eagle ✘ Music </b> \n\n"
             "<blockquote>"
             "<blockquote>"
-            f"❍ <b>Title:</b> {one_line}\n"
-            f"❍ <b>Requested by:</b> {song_info['requester']}"
+            f"☞ <b>Title:</b> {one_line}\n"
+            f"☞ <b>Requested by:</b> {song_info['requester']}"
             "</blockquote>"
         )
         initial_progress = get_progress_bar_styled(0, total_duration)
@@ -1156,7 +1156,7 @@ async def stop_handler(client, message):
         if "not in a call" in str(e).lower():
             await message.reply("❌ The bot is not currently in a voice chat.")
         else:
-            await message.reply(f"❌ An error occurred while leaving the voice chat: {str(e)}\n\nSupport: @bye_artist")
+            await message.reply(f"❌ An error occurred while leaving the voice chat: {str(e)}\n\nSupport: @eagle_hu")
         return
 
     # Clear the song queue
@@ -1306,7 +1306,7 @@ async def reboot_handler(_, message):
 
         await message.reply("♻️ Rebooted for this chat. All data for this chat has been cleared.")
     except Exception as e:
-        await message.reply(f"❌ Failed to reboot for this chat. Error: {str(e)}\n\n support - @bye_artist")
+        await message.reply(f"❌ Failed to reboot for this chat. Error: {str(e)}\n\n support - @eagle_hu")
 
 
 
@@ -1337,7 +1337,7 @@ async def ping_handler(_, message):
 
         await message.reply(response)
     except Exception as e:
-        await message.reply(f"❌ Failed to execute the command.\nError: {str(e)}\n\nSupport: @bye_artist")
+        await message.reply(f"❌ Failed to execute the command.\nError: {str(e)}\n\nSupport: @eagle_hu")
 
 
 
@@ -1558,7 +1558,7 @@ if __name__ == "__main__":
 
     me = bot.get_me()
     BOT_NAME = me.first_name or "Artist Music"
-    BOT_USERNAME = me.username or os.getenv("BOT_USERNAME", "Artistmusiclogs")
+    BOT_USERNAME = me.username or os.getenv("BOT_USERNAME", "eagle_hu")
     BOT_LINK = f"https://t.me/{BOT_USERNAME}"
 
     logger.info(f"✅ Bot Name: {BOT_NAME!r}")
